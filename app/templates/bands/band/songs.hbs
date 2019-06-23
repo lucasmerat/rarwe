@@ -1,32 +1,23 @@
 <ul class="rr-list">
-    {{#each model.songs as |song|}}
-    <li class="rr-list-item"> {{song.title}}
-        <StarRating class="fr" @rating={{song.rating}} @onClick={{action "updateRating" song}} @free="free" />
+  {{#each model.songs as |song|}}
+    <li class="rr-list-item"> 
+      {{song.title}} <StarRating class="fr" @rating={{song.rating}} @onClick={{action "updateRating" song}} @free="free" />
     </li>
-    {{else}}
-    <li class="tc">
-        No {{model.name}} songs yet.
-    </li>
-    {{/each}}
+  {{else}}
+    <li class="tc"> No {{model.name}} songs yet.</li>
+  {{/each}}
 </ul>
 {{#if isAddingSong}}
-<form class="rr-inline-form" onsubmit={{action "saveSong"}}>
+  <form class="rr-inline-form" onsubmit={{action "saveSong"}}>
     {{input
     type="text"
     class="rr-input"
     value=newSongName
     placeholder="New Song"
     }}
-    <button type="submit" class="rr-action-button" disabled={{isAddButtonDisabled}}>
-        Add
-    </button>
-    <button class="rr-cancel-icon" onclick={{action "cancelAddSong"}}>
-        {{fa-icon "times"}}
-    </button>
-</form>
+    <button type="submit" class="rr-action-button" disabled={{isAddButtonDisabled}}>Add</button>
+    <button class="rr-cancel-icon" onclick={{action "cancelAddSong"}}>{{fa-icon "times"}}</button>
+  </form>
 {{else}}
-<label onclick={{action "addSong"}}>
-    {{fa-icon "plus"}}
-    <span class="ml1">Add new Song</span>
-</label>
+  <label onclick={{action "addSong"}}>{{fa-icon "plus"}}<span class="ml1">Add new Song</span></label>
 {{/if}}

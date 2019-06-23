@@ -1,36 +1,23 @@
 <div class="rr-sidebar">
-    <ul class="rr-list"> 
-        {{#each model as |band|}}
-        <li class="rr-list-item">
-            {{#link-to "bands.band" band.id class="rr-band-link"}}
-             {{band.name}} <span class="rr-pointer"> {{fa-icon "angle-right"}} </span>
-            {{/link-to}}
-        </li>
-        {{/each}}
-        <div class="rr-new-label">
-            {{#if isAddingBand}}
-            <form class="rr-inline-form" onsubmit={{action "saveBand"}}>
-            {{input
-              type="text"
-              class="rr-input"
-              value=newBandName
-              placeholder="New band"
-            }}
-            <button type="submit" class="rr-action-button"
-                disabled={{isAddButtonDisabled}}>
-                Add
-            </button>
-            <button class="rr-cancel-icon" onclick={{action "cancelAddBand"}}>
-                {{fa-icon "times"}}
-            </button>
-            </form>
-            {{else}}
-            <label onclick={{action "addBand"}}>
-                {{fa-icon "plus"}}
-                <span class="ml1">Add new band</span>
-            </label>
-            {{/if}}
-        </div>
-    </ul>
+  <ul class="rr-list"> 
+    {{#each model as |band|}}
+      <li class="rr-list-item">
+        {{#link-to "bands.band" band.id class="rr-band-link"}}
+          {{band.name}} <span class="rr-pointer"> {{fa-icon "angle-right"}} </span>
+        {{/link-to}}
+      </li>
+    {{/each}}
+    <div class="rr-new-label">
+      {{#if isAddingBand}}
+        <form class="rr-inline-form" onsubmit={{action "saveBand"}}>
+          {{input type="text" class="rr-input" value=newBandName placeholder="New band"}}
+          <button type="submit" class="rr-action-button" disabled={{isAddButtonDisabled}}>Add</button>
+          <button class="rr-cancel-icon" onclick={{action "cancelAddBand"}}>{{fa-icon "times"}}</button>
+        </form>
+      {{else}}
+        <label onclick={{action "addBand"}}>{{fa-icon "plus"}}<span class="ml1">Add new band</span></label>
+      {{/if}}
+    </div>
+  </ul>
 </div>
 <div class="rr-main-panel"> {{outlet}} </div>
