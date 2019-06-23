@@ -1,5 +1,5 @@
-import EmberRouter from '@ember/routing/router';
-import config from './config/environment';
+import EmberRouter from "@ember/routing/router";
+import config from "./config/environment";
 
 const Router = EmberRouter.extend({
   location: config.locationType,
@@ -7,6 +7,12 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route("bands", function() {
+    this.route("band", { path: ":id" }, function() {
+      this.route("songs");
+      this.route('details');
+    });
+  });
 });
 
 export default Router;

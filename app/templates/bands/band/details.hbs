@@ -1,0 +1,13 @@
+<section class="rr-panel b--solid br1 bw1">
+    <h3>Description</h3>
+    <p class="lh-copy">{{model.description}}</p>
+</section>
+
+{{#if isEditingDetails}}
+{{input value=newDescription insert-newline=(action "editDetails")}}
+<button onclick={{action "editDetails"}}>Save Details</button>
+{{else}}
+<button onclick={{action "startEdit"}}>Edit Details</button>
+{{/if}}
+
+{{outlet}}
