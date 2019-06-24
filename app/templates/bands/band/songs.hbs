@@ -1,5 +1,21 @@
+<div class="rr-controls-panel"> 
+  <div class="rr-sort-panel"> 
+    <button class="rr-sort-button" data-test-rr="sort-by-rating-desc" onclick={{action (mut sortBy) "ratingDesc"}}> Rating {{fa-icon "angle-down"}} </button> 
+    <button class="rr-sort-button" data-test-rr="sort-by-rating-asc" onclick={{action (mut sortBy) "ratingAsc"}}> Rating {{fa-icon "angle-up"}} </button> 
+    <button class="rr-sort-button" data-test-rr="sort-by-title-desc" onclick={{action (mut sortBy) "titleDesc"}}> Title {{fa-icon "angle-down"}} </button> 
+    <button class="rr-sort-button" data-test-rr="sort-by-title-asc" onclick={{action (mut sortBy) "titleAsc"}}> Title {{fa-icon "angle-up"}} </button> 
+  </div> 
+</div> 
+
+<div class="rr-controls-panel"> 
+  <div class="rr-search-panel"> 
+    {{input type="text" class="rr-input" value=searchTerm data-test-rr="search-box"}}
+    <button type="button" class="rr-search-button">{{fa-icon "search"}}</button>
+  </div> 
+</div>
+
 <ul class="rr-list">
-  {{#each model.songs as |song|}}
+  {{#each sortedSongs as |song|}}
     <li class="rr-list-item" data-test-rr="song-list-item"> 
       {{song.title}} <StarRating class="fr" @rating={{song.rating}} @onClick={{action "updateRating" song}} @free="free" />
     </li>
